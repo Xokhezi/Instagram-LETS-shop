@@ -1,5 +1,6 @@
 :root {
   --prim: #ff8725;
+  --black: #0a0909;
 }
 html {
   scroll-behavior: smooth;
@@ -27,12 +28,21 @@ h2 {
 h3 {
   font-weight: bold;
   font-size: 2rem;
-  margin-top: 10px;
+  margin-top: 0px;
+  margin-bottom: 10px;
 }
 img {
   max-width: 60%;
   height: auto;
   border-radius: 10px;
+}
+input {
+  height: 30px;
+  width: 50px;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  border: solid 1px;
+  text-align: center;
 }
 nav {
   display: flex;
@@ -43,6 +53,8 @@ nav {
   align-items: center;
   position: fixed;
   background-color: white;
+  border-bottom: #ff8725 solid 1px;
+  z-index: 1;
   width: 100%;
   height: 40px;
   > a:hover {
@@ -74,6 +86,7 @@ nav {
 }
 .shop {
   background: white;
+  flex-wrap: wrap;
   height: 100vh;
   display: flex;
   justify-content: center;
@@ -82,7 +95,6 @@ nav {
 }
 .card-row {
   display: flex;
-  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
   flex-direction: row;
@@ -103,12 +115,36 @@ nav {
   transform: scale(1.05);
   cursor: pointer;
 }
+.btn-add {
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  height: 30px;
+  background-color: var(--prim);
+  color: white;
+  font-weight: bold;
+  font-size: 1rem;
+  padding: 0 10px;
+  border: #ff8725 solid 2px;
+}
+.btn-add:hover {
+  cursor: pointer;
+  font-weight: normal;
+  background: white;
+  color: var(--prim);
+}
+.add-section {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 50px;
+}
 .right {
   animation: fromRight 9s linear;
   animation-play-state: paused;
   animation-delay: calc(var(--scroll) * -12s);
 }
 .left {
+  flex-wrap: wrap;
   animation: fromLeft 8s linear;
   animation-play-state: paused;
   animation-delay: calc(var(--scroll) * -12s);
@@ -131,5 +167,18 @@ nav {
   100% {
     transform: translateX(0px);
     opacity: 1;
+  }
+}
+@media (max-width: 1255px) {
+  .right,
+  .left {
+    animation: none;
+  }
+  .shop {
+    height: fit-content;
+    flex-direction: column;
+  }
+  .card-row {
+    flex-direction: column;
   }
 }
